@@ -1,0 +1,38 @@
+.awen-card {
+  width: 440px;
+  height: 172px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 8px;
+  background-color: #f6f7f9;
+  padding: 18px 24px;
+  transition: background 0.2s;
+  &:hover {
+    box-shadow: 0 8px 24px 0 rgb(0 121 242 / 40%);
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #0079f2;
+    .awen-card-title,
+    .awen-card-tip,
+    .awen-card-btn {
+      color: #fff;
+    }
+    .MuiButton-outlined {
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+  }
+  .awen-card-title {
+    font-size: 18px;
+    color: #1f1f1f;
+    line-height: 27px;
+    margin-bottom: 12px;
+    font-weight: bolder;
+  }
+  .awen-card-tip {
+    font-size: 14px;
+    color: #79889b;
+    line-height: 22px;
+  }
+}

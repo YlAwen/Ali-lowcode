@@ -1,5 +1,4 @@
-import ColorfulButtonMeta from '/home/awen/Desktop/lowcode/awen-components-demo/lowcode/colorful-button/meta'
-import ColorfulInputMeta from '/home/awen/Desktop/lowcode/awen-components-demo/lowcode/colorful-input/meta'
+import AwenCardMeta from '/home/awen/Desktop/lowcode/awen-components-demo/lowcode/awen-card/meta'
 
 const componentCategorySort = {};
 ["基础元素","布局容器类","表格类","表单详情类","帮助类","对话框类","业务类","通用","引导","信息输入","信息展示","信息反馈"]
@@ -101,7 +100,7 @@ function fillRealVersion(meta, packageName = 'awen-components-demo', version = '
   return meta;
 }
 
-const componentMetas = [ColorfulButtonMeta,ColorfulInputMeta];
+const componentMetas = [AwenCardMeta];
 const components = [];
 const npmInfo = {};
 componentMetas.forEach(meta => {
