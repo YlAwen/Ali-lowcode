@@ -25,7 +25,7 @@ const AwenCardMeta: ComponentMetadata = {
           label: {
             type: 'i18n',
             'en-US': 'title',
-            'zh-CN': 'title',
+            'zh-CN': '标题',
           },
         },
         name: 'title',
@@ -40,7 +40,7 @@ const AwenCardMeta: ComponentMetadata = {
           label: {
             type: 'i18n',
             'en-US': 'description',
-            'zh-CN': 'description',
+            'zh-CN': '提示信息',
           },
         },
         name: 'description',
@@ -55,7 +55,7 @@ const AwenCardMeta: ComponentMetadata = {
           label: {
             type: 'i18n',
             'en-US': 'btnInfo',
-            'zh-CN': 'btnInfo',
+            'zh-CN': '按钮文本',
           },
         },
         name: 'btnInfo',
@@ -70,7 +70,7 @@ const AwenCardMeta: ComponentMetadata = {
           label: {
             type: 'i18n',
             'en-US': 'href',
-            'zh-CN': 'href',
+            'zh-CN': '跳转地址',
           },
         },
         name: 'href',

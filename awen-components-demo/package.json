@@ -75,6 +75,7 @@
     "webpack": "^4.46.x"
   },
   "componentConfig": {
-    "isComponentLibrary": true
+    "isComponentLibrary": true,
+    "materialSchema": "https://unpkg.com/awen-components-demo@0.1.0/build/lowcode/assets-prod.json"
   }
 }
