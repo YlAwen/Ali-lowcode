@@ -255,13 +255,13 @@ export default async function registerPlugins() {
   previewSample.pluginName = 'previewSample';
   await plugins.register(previewSample);
 
-  const baidu = (ctx: ILowCodePluginContext) => {
+  const awen = (ctx: ILowCodePluginContext) => {
     return {
       name: 'previewSample',
       async init() {
         const { skeleton } = ctx;
         skeleton.add({
-          name: 'baidu',
+          name: 'awen',
           area: 'topArea',
           type: 'Widget',
           props: {
@@ -269,8 +269,8 @@ export default async function registerPlugins() {
           },
           content: (
             <>
-              <Button type="primary" warning onClick={() => window.open('https://www.baidu.com')}>
-                百度一下
+              <Button type="primary" warning onClick={() => window.open('https://www.ylawen.com/')}>
+                Awen导航
               </Button>
             </>
           ),
@@ -278,8 +278,8 @@ export default async function registerPlugins() {
       },
     };
   };
-  baidu.pluginName = 'baidu';
-  await plugins.register(baidu);
+  awen.pluginName = 'awen';
+  await plugins.register(awen);
 
   const customSetter = (ctx: ILowCodePluginContext) => {
     return {

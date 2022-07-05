@@ -3,17 +3,13 @@
     {
       "package": "moment",
       "version": "2.24.0",
-      "urls": [
-        "https://g.alicdn.com/mylib/moment/2.24.0/min/moment.min.js"
-      ],
+      "urls": ["https://g.alicdn.com/mylib/moment/2.24.0/min/moment.min.js"],
       "library": "moment"
     },
     {
       "package": "lodash",
       "library": "_",
-      "urls": [
-        "https://g.alicdn.com/platform/c/lodash/4.6.1/lodash.min.js"
-      ]
+      "urls": ["https://g.alicdn.com/platform/c/lodash/4.6.1/lodash.min.js"]
     },
     {
       "title": "fusion组件库",
@@ -73,6 +69,26 @@
         "https://alifd.alicdn.com/npm/@alifd/fusion-ui@1.0.5/build/lowcode/view.js",
         "https://alifd.alicdn.com/npm/@alifd/fusion-ui@1.0.5/build/lowcode/view.css"
       ]
+    },
+    {
+      "package": "awen-components-demo",
+      "version": "0.1.0",
+      "library": "BizComps",
+      "urls": [
+        "http://82.157.47.38:520/lowcode/render/default/view.js",
+        "http://82.157.47.38:520/lowcode/render/default/view.css"
+      ],
+      "editUrls": [
+        "http://82.157.47.38:520/lowcode/view.js",
+        "http://82.157.47.38:520/lowcode/view.css"
+      ],
+      "advancedUrls": {
+        "default": [
+          "http://82.157.47.38:520/lowcode/render/default/view.js",
+          "http://82.157.47.38:520/lowcode/render/default/view.css"
+        ]
+      },
+      "advancedEditUrls": {}
     }
   ],
   "components": [
@@ -109,13 +125,24 @@
         "default": "https://alifd.alicdn.com/npm/@alifd/fusion-ui@1.0.5/build/lowcode/meta.js",
         "design": "https://alifd.alicdn.com/npm/@alifd/fusion-ui@1.0.5/build/lowcode/meta.design.js"
       }
+    },
+    {
+      "exportName": "AwenComponentsDemoMeta",
+      "npm": {
+        "package": "awen-components-demo",
+        "version": "0.1.0"
+      },
+      "url": "http://82.157.47.38:520/lowcode/meta.js",
+      "urls": {
+        "default": "http://82.157.47.38:520/lowcode/meta.js"
+      },
+      "advancedUrls": {
+        "default": ["http://82.157.47.38:520/lowcode/meta.js"]
+      }
     }
   ],
   "sort": {
-    "groupList": [
-      "精选组件",
-      "原子组件"
-    ],
+    "groupList": ["精选组件", "原子组件", "Awen组件"],
     "categoryList": [
       "基础元素",
       "布局容器类",
@@ -131,9 +158,6 @@
       "信息反馈"
     ]
   },
-  "groupList": [
-    "精选组件",
-    "原子组件"
-  ],
+  "groupList": ["精选组件", "原子组件", "Awen组件"],
   "ignoreComponents": {}
 }
