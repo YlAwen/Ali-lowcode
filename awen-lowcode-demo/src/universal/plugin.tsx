@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  ILowCodePluginContext,
-  plugins,
-  skeleton,
-  project,
-  setters,
-} from '@alilc/lowcode-engine';
+import { ILowCodePluginContext, plugins, skeleton, project, setters } from '@alilc/lowcode-engine';
 import AliLowCodeEngineExt from '@alilc/lowcode-engine-ext';
 import { Button } from '@alifd/next';
 import UndoRedoPlugin from '@alilc/lowcode-plugin-undo-redo';
@@ -14,8 +8,8 @@ import ZhEnPlugin from '@alilc/lowcode-plugin-zh-en';
 import CodeGenPlugin from '@alilc/lowcode-plugin-code-generator';
 import DataSourcePanePlugin from '@alilc/lowcode-plugin-datasource-pane';
 import SchemaPlugin from '@alilc/lowcode-plugin-schema';
-import CodeEditor from "@alilc/lowcode-plugin-code-editor";
-import ManualPlugin from "@alilc/lowcode-plugin-manual";
+import CodeEditor from '@alilc/lowcode-plugin-code-editor';
+import ManualPlugin from '@alilc/lowcode-plugin-manual';
 import Inject, { injectAssets } from '@alilc/lowcode-plugin-inject';
 import SimulatorResizer from '@alilc/lowcode-plugin-simulator-select';
 
@@ -25,15 +19,10 @@ import BehaviorSetter from '../setters/behavior-setter';
 import CustomSetter from '../setters/custom-setter';
 import Logo from '../sample-plugins/logo';
 import { deleteHiddenTransducer } from '../sample-plugins/delete-hidden-transducer';
+import PagesPane from '../plugins/pages-plugin';
 
-import {
-  loadIncrementalAssets,
-  getPageSchema,
-  saveSchema,
-  resetSchema,
-  preview,
-} from './utils';
-import assets from './assets.json'
+import { loadIncrementalAssets, getPageSchema, saveSchema, resetSchema, preview } from './utils';
+import assets from './assets.json';
 import { registerRefProp } from 'src/sample-plugins/set-ref-prop';
 
 export default async function registerPlugins() {
@@ -73,7 +62,7 @@ export default async function registerPlugins() {
         project.openDocument(schema);
       },
     };
-  }
+  };
   editorInit.pluginName = 'editorInit';
   await plugins.register(editorInit);
 
@@ -110,13 +99,27 @@ export default async function registerPlugins() {
             description: '组件库',
           },
         });
+
         componentsPane?.disable?.();
         project.onSimulatorRendererReady(() => {
           componentsPane?.enable?.();
-        })
+        });
+        // 注册页面插件
+        skeleton.add({
+          area: 'leftArea',
+          type: 'PanelDock',
+          name: 'pagesPane',
+          content: PagesPane,
+          contentProps: {},
+          props: {
+            align: 'top',
+            icon: 'list',
+            description: '页面管理',
+          },
+        });
       },
     };
-  }
+  };
   builtinPluginRegistry.pluginName = 'builtinPluginRegistry';
   await plugins.register(builtinPluginRegistry);
 
@@ -149,7 +152,7 @@ export default async function registerPlugins() {
         });
       },
     };
-  }
+  };
   setterRegistry.pluginName = 'setterRegistry';
   await plugins.register(setterRegistry);
 
@@ -173,11 +176,7 @@ export default async function registerPlugins() {
             align: 'right',
             width: 80,
           },
-          content: (
-            <Button onClick={loadIncrementalAssets}>
-              异步加载资源
-            </Button>
-          ),
+          content: <Button onClick={loadIncrementalAssets}>异步加载资源</Button>,
         });
       },
     };
@@ -199,11 +198,7 @@ export default async function registerPlugins() {
           props: {
             align: 'right',
           },
-          content: (
-            <Button onClick={() => saveSchema()}>
-              保存到本地
-            </Button>
-          ),
+          content: <Button onClick={() => saveSchema()}>保存到本地</Button>,
         });
         skeleton.add({
           name: 'resetSchema',
@@ -212,11 +207,7 @@ export default async function registerPlugins() {
           props: {
             align: 'right',
           },
-          content: (
-            <Button onClick={() => resetSchema()}>
-              重置页面
-            </Button>
-          ),
+          content: <Button onClick={() => resetSchema()}>重置页面</Button>,
         });
         hotkey.bind('command+s', (e) => {
           e.preventDefault();
@@ -224,7 +215,7 @@ export default async function registerPlugins() {
         });
       },
     };
-  }
+  };
   saveSample.pluginName = 'saveSample';
   await plugins.register(saveSample);
 
@@ -251,9 +242,11 @@ export default async function registerPlugins() {
             align: 'right',
           },
           content: (
-            <Button type="primary" onClick={() => preview()}>
-              预览
-            </Button>
+            <>
+              <Button type="primary" onClick={() => preview()}>
+                预览
+              </Button>
+            </>
           ),
         });
       },
@@ -261,6 +254,32 @@ export default async function registerPlugins() {
   };
   previewSample.pluginName = 'previewSample';
   await plugins.register(previewSample);
+
+  const baidu = (ctx: ILowCodePluginContext) => {
+    return {
+      name: 'previewSample',
+      async init() {
+        const { skeleton } = ctx;
+        skeleton.add({
+          name: 'baidu',
+          area: 'topArea',
+          type: 'Widget',
+          props: {
+            align: 'right',
+          },
+          content: (
+            <>
+              <Button type="primary" warning onClick={() => window.open('https://www.baidu.com')}>
+                百度一下
+              </Button>
+            </>
+          ),
+        });
+      },
+    };
+  };
+  baidu.pluginName = 'baidu';
+  await plugins.register(baidu);
 
   const customSetter = (ctx: ILowCodePluginContext) => {
     return {
@@ -273,7 +292,7 @@ export default async function registerPlugins() {
         setters.registerSetter('CustomSetter', CustomSetter);
       },
     };
-  }
+  };
   customSetter.pluginName = 'customSetter';
   await plugins.register(customSetter);
-};
+}
